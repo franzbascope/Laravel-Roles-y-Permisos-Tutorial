@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,5 +21,6 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
-
-Route::resource('books', 'booksController');
+Route::group(['middleware' => ['permission:view_books|edit_books|delete_books|create_books']], function () {
+    Route::resource('books', 'booksController');
+});
