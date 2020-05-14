@@ -37,4 +37,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|min:5',
+    ];
+    public static $updateRules = [
+        'name' => 'required',
+        'email' => 'required|email',
+    ];
 }
