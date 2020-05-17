@@ -27,3 +27,5 @@ Route::group(['middleware' => ['permission:view_books|edit_books|delete_books|cr
 
 
 Route::resource('users', 'UserController');
+
+Route::resource('roles', 'RoleController');
