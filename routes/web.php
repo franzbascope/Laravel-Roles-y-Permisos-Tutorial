@@ -24,8 +24,10 @@ Route::get('/home', 'HomeController@index')->middleware('verified');
 Route::group(['middleware' => ['permission:view_books|edit_books|delete_books|create_books']], function () {
     Route::resource('books', 'booksController');
 });
+Route::group(['middleware' => ['permission:view_users|edit_users|delete_users|create_users']], function () {
+    Route::resource('users', 'UserController');
+});
 
-
-Route::resource('users', 'UserController');
-
-Route::resource('roles', 'RoleController');
+Route::group(['middleware' => ['permission:view_roles|edit_roles|delete_roles|create_roles']], function () {
+    Route::resource('roles', 'RoleController');
+});
